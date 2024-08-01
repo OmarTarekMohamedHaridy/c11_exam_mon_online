@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:buttons_tabbar/buttons_tabbar.dart';
+
 void main() {
   runApp( MyApp());
 }
@@ -61,34 +61,26 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.only(top: 16),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DefaultTabController(
-                        length: 3,
-                        child: Column(
-                          children: <Widget>[
-                            ButtonsTabBar(
-                              // Customize the appearance and behavior of the tab bar
-                              backgroundColor: Colors.red,
-                              borderWidth: 2,
-                              borderColor: Colors.black,
-                              labelStyle: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              unselectedLabelStyle: TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              // Add your tabs here
-                              tabs: ,
-                            ),
-                            Expanded(
-                              child: TabBarView(
-                                children: [],
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
+                    Column(children: [
+                      Image.asset("assets/image/Frame 10.png"),
+                      SizedBox(height: 8,),
+                      Text("Love")
+                    ],),
+                    Column(children: [
+                      Image.asset("assets/image/cool.png"),
+                      SizedBox(height: 8,),
+                      Text("Cool")
+                    ],),
+                    Column(children: [
+                      Image.asset("assets/image/Frame 8.png"),
+                      SizedBox(height: 8,),
+                      Text("Happy")
+                    ],),
+                    Column(children: [
+                      Image.asset("assets/image/Frame 12.png"),
+                      SizedBox(height: 8,),
+                      Text("Sad")
+                    ],),
                   ],),
                 ),
                 Padding(

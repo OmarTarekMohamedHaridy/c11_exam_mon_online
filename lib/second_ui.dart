@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'ScrollableSingleChip.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main (){
   runApp(SecApp());
@@ -13,6 +16,12 @@ class SecApp extends StatefulWidget {
 }
 
 class _SecAppState extends State<SecApp> {
+  int activeIndex = 0;
+  final image = [    "assets/image_sec/Image Placeholder 400x600.png",
+"assets/image_sec/Image Placeholder 1.png",
+
+
+  ];
   int SelectedIndex = 0 ;
   @override
   Widget build(BuildContext context) {
@@ -38,20 +47,50 @@ actions: [Padding(
 
     ),
 
-      body: Padding(
-        padding: const EdgeInsets.only(left: 24.0,top: 40),
-        child: Column(children: [
-          Padding(
-            padding: const EdgeInsets.only(right: 28),
-            child: Row(
-              children: [
-              Text("Categories",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,),),
-              Spacer(),
-              Text("See More ",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 14,color:  Color(0xff4838D1) ),),
-            ],),
-          ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 24.0,top: 40),
+          child: Column(children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 28),
+              child: Row(
+                children: [
+                Text("Categories",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,),),
+                Spacer(),
+                Text("See More ",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 14,color:  Color(0xff4838D1) ),),
+              ],),
+            ),
+        SizedBox(height: 16,),
+            ScrollableSingleChip(),
+            SizedBox(height: 32,),
+            Padding(
+              padding: const EdgeInsets.only(right: 28),
+              child: Row(
+                children: [
+                  Text("Recommended For You",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16,),),
+                  Spacer(),
+                  Text("See More ",style: TextStyle(fontWeight:FontWeight.w500,fontSize: 14,color:  Color(0xff4838D1) ),),
+                ],),
+            ),
+            Container(child:
+            CarouselSlider.builder(
+                options: CarouselOptions(
+                  onPageChanged: (index, reason) => setState(() =>
+                  activeIndex = index),
 
-        ],),
+                  height: 300,),
+                itemCount: image.length,
+                itemBuilder: ( context, index, realIndex) {
+                  final Assetimages =image[index];
+                  return createImage(Assetimages,index);
+                }
+
+            ),
+            ),
+            SizedBox(height: 15,),
+            buildIndicator()
+          ],),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
@@ -74,4 +113,15 @@ actions: [Padding(
       ],),
     ),);
   }
+  Widget createImage (String Assetimages,int index) =>
+      Container(   margin: EdgeInsets.symmetric(horizontal:20),
+          child: Image.asset(image[index]));
+
+
+  Widget buildIndicator () => AnimatedSmoothIndicator(
+      effect:ExpandingDotsEffect(
+          dotHeight: 10,dotWidth: 10
+      ) ,
+      activeIndex: activeIndex, count: image.length
+  );
 }
