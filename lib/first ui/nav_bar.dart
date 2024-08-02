@@ -28,10 +28,10 @@ class _NavBarState extends State<NavBar> {
       elevation: 30,
 
       items: [
-        BottomNavigationBarItem( icon:ImageIcon(AssetImage("assets/image/home-05.png")),label: "."),
-        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/grid-01.png")),label: "."),
-        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/calendar.png")),label: "."),
-        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/user-03.png")), label: "."),
+        BottomNavigationBarItem( icon:ImageIcon(AssetImage("assets/image/home-05.png")),label: "Home"),
+        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/grid-01.png")),label: "Widget"),
+        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/calendar.png")),label: "Calender"),
+        BottomNavigationBarItem(icon:ImageIcon(AssetImage("assets/image/user-03.png")), label: "Me"),
       ],
 
     );

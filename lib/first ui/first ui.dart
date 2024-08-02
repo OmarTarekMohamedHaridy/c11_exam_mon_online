@@ -26,14 +26,17 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(appBar:
-      AppBar(toolbarHeight: 40,
-        title: Text("Moody",style:GoogleFonts.inter(textStyle:TextStyle(fontSize: 24,fontWeight: FontWeight.w400)) ),
+      AppBar(toolbarHeight: 70,
+        title: Padding(
+          padding: const EdgeInsets.only(top: 34.0),
+          child: Text("Moody",style:GoogleFonts.inter(textStyle:TextStyle(fontSize: 24,fontWeight: FontWeight.w400)) ),
+        ),
         leading: Padding(
-          padding: const EdgeInsets.only(left: 30.0),
+          padding: const EdgeInsets.only(left: 30.0,top: 34.0),
           child: Image.asset("assets/image/Group.png",height: 40,width: 40,),
         ),
         actions: [Padding(
-          padding: const EdgeInsets.only(right: 30.0),
+          padding: const EdgeInsets.only(right: 30.0,top: 34.0),
           child: badges.Badge(
             badgeContent: Text('1'),
             child: Icon(Icons.notifications_none,size: 25,),
